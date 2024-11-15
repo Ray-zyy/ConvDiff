@@ -9,8 +9,8 @@ from models.simvp import SimVP
 from models.ConvLSTM import ConvLSTM
 from models.UNet import UNet
 from models.eartherformer_model import CuboidTransformerModel
-from models.model4 import SimVP
-# from models.DFSIMVP import SimVP
+from models.model4 import Convdiff
+# from models.Convdiff import Convdiff
 # from models.STResNet import ST_ResNet
 
 if __name__ == '__main__':
@@ -38,23 +38,11 @@ if __name__ == '__main__':
     valid_loader = test_loader if valid_loader is None else valid_loader
 
     # 4.初始化组件(model, optimizer, criterion)
-    model = SimVP(tuple(args.in_shape), 
+    model = Convdiff(tuple(args.in_shape), 
                    args.hid_S,
                    args.hid_T, 
                    args.N_S, 
                    args.N_T).to(device)
-    # model = ConvLSTM(
-    #     input_dim = 3, 
-    #     hidden_dim = [64, 64, 128], 
-    #     kernel_size = (3, 3), 
-    #     num_layers = 3, 
-    #     horizon=20, 
-    #     output_dim=3,
-    #     batch_first = True, 
-    #     bias = True, 
-    #     return_all_layers = False
-    # ).to(device)
-    # Load model configuration
     
     # model = UNet(n_channels=50 * 2, out_channels=50 * 2, bilinear=True).to(device)
     # model = ST_ResNet(tuple(args.in_shape)).to(device)
@@ -87,6 +75,6 @@ if __name__ == '__main__':
         exp.test()
     else:
         # 模型保存路径
-        args.checkpoint = "workdir/ConvLSTM/b1fds/20240809105030/b1fds_ConvLSTM_best_model.pth"
+        args.checkpoint = "输入保持路径"
         logger.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>> test <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
         exp.test()
