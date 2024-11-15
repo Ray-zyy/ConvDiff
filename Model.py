@@ -171,9 +171,9 @@ class DDIM(nn.Module):
 
         return sqrt_alpha_hat * x + sqrt_one_minus_alpha_hat * eps
 
-class SimVP(nn.Module):
+class Convdiff(nn.Module):
     def __init__(self, shape_in, hid_S=16, hid_T=256, N_S=4, N_T=8, incep_ker=[3,5,7,11], groups=8):
-        super(SimVP, self).__init__()
+        super(Convdiff, self).__init__()
         T, C, H, W = shape_in
         self.enc = Encoder(C, hid_S, N_S)
         self.hid = Mid_Xnet(T*hid_S, hid_T, N_T, incep_ker, groups)
@@ -204,6 +204,6 @@ class SimVP(nn.Module):
 
 
 if __name__ == '__main__':
-    model = SimVP(shape_in=(4, 2, 32, 32))
+    model = Convdiff(shape_in=(4, 2, 32, 32))
     x = torch.randn(32, 4, 2, 32, 32)
     print(model(x).shape)
