@@ -2,7 +2,6 @@ from torch import nn
 import torch
 import math
 
-
 class BasicConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size, stride, dilation, transpose=False, act_norm=False):
         super(BasicConv2d, self).__init__()
@@ -67,7 +66,6 @@ class Inception(nn.Module):
             y += layer(x)
         return y
 
-# ==============================================================================================
 def stride_generator(N, reverse=False):
     strides = [1, 2]*10
     if reverse: return list(reversed(strides[:N]))
