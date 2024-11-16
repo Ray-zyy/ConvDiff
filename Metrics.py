@@ -7,8 +7,6 @@ def MAE(pred, true):
 def MSE(pred, true):
     return np.mean((pred-true)**2,axis=(0,1)).sum()
 
-# cite the `PSNR` code from E3d-LSTM, Thanks!
-# https://github.com/google/e3d_lstm/blob/master/src/trainer.py line 39-40
 def PSNR(pred, true):
     mse = np.mean((np.uint8(pred * 255)-np.uint8(true * 255))**2)
     return 20 * np.log10(255) - 10 * np.log10(mse)
