@@ -1,14 +1,3 @@
----
-title: "\U0001F300 ConvDiff"
-
----
-
----
-title: 🌀 ConvDiff
-
----
-
-<div align="center">
 
 # 🌀 ConvDiff
 
